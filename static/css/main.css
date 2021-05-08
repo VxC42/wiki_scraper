@@ -1,0 +1,107 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: georgia, serif;
+    background-color: #303030;
+}
+#container{
+    width:100%;
+    text-align:center;
+    padding-top: 200px;
+}
+#title{
+    margin: 10px;
+    color: #ffffff;
+}
+a:link{
+    text-decoration: none;
+}
+#game_input{
+    width: 500px;
+    height: 44px;
+    text-align: left;
+    margin: 0 auto;
+    padding: 3px 7px;
+    border-radius: 10px;
+    border: 1px black solid;
+    font-size: 25px;
+}
+#err{
+    width: 500px;
+    margin:10px auto;
+    text-align:left;
+    color: #fc0303;
+    font-family:sans-serif;
+}
+#succ{
+    width: 500px;
+    margin:10px auto;
+    text-align:left;
+    color: #2afc00;
+    font-family:sans-serif;
+}
+#multimsg{
+    width: 500px;
+    margin:10px auto;
+    text-align:left;
+    color: #ffffff;
+    font-family:sans-serif;
+    font-weight: bold;
+    text-decoration:underline;
+}
+#multiples{
+    width: 500px;
+    margin:10px auto;
+    text-align:left;
+    color: #ffffff;
+    font-family:sans-serif;
+}
+
+#multiples a:link{
+    color: #edc12d;
+    font-family:sans-serif;
+}
+
+#multiples a:visited{
+    color: #edc12d;
+    font-family:sans-serif;
+}
+
+#multiples a:hover{
+    color: #edc12d;
+    font-family:sans-serif;
+}
+#go_btn{
+    font-size: 20px;
+    background-color: #606060;
+    border: 1px black solid;
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border-radius: 10px;
+    vertical-align: top;
+    color: #ffffff;
+}
+#go_btn:hover{
+    background-color: #edc12d;
+    color: #000000;
+}
+#info_icon{
+    width: 19px;
+    height: 19px;
+    display:inline-block;
+    border: 1px black solid;
+    vertical-align: top;
+    border-radius: 20px;
+}
+
+#info_icon:hover{
+    background-color: #edc12d;
+}
+li > ul{
+    margin-left:50px;
+    margin-top: 10px;
+}
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+        <title>Game Matcher</title>
+    </head>
+    <body>
+    <a href="/"><h1 id="title">Game Matcher</h1></a>
+        <div id="container">
+
+            <form action="/", method="POST">
+                <div id="info_icon">i</div>
+                <input type="text" id="game_input" name="game_input" placeholder="Enter a video game title here">
+                <input type="submit" id="go_btn" value="GO!">
+            </form>
+
+                {% if error %}
+                    <div id="err"><strong>{{ error }}</strong></div>
+                {% endif %}
+                {% if success %}
+                    <div id="succ"><strong>{{ success }}</strong></div>
+                {% endif %}
+                {% if multiples %}
+                    <p id="multimsg">There were multi entries found for that game title, please select the Video Game link below.</p>
+                    {% for item in multiples %}
+                        <div id="multiples">{{ item|safe }}</div>
+                    {% endfor %}
+                {% endif %}
+
+        </div>
+
+        </body>
+</html>
