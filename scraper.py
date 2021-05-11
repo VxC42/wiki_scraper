@@ -3,68 +3,6 @@ from bs4 import BeautifulSoup
 import requests
 import json
 
-"""
-# Scrapes page from Title to Table of Contents (Summary)
-game_title = "New Pokemon Snap"
-if game_title == "":
-    error = "Please enter a game title"
-else:
-    url="https://en.wikipedia.org/wiki/"+game_title
-    
-    page = requests.get(url)
-    if str(page) == "<Response [404]>":
-        error = "Sorry there is no information on this title: No wiki found"
-    else:
-        cut_footer = page.text.split('id="toctogglecheckbox"')
-        cut_header = cut_footer[0].split('id="firstHeading"')
-        soup = BeautifulSoup(cut_header[1], 'html.parser')
-        results = soup.findAll('p')
-        isGame = False
-        for result in results:
-            if "game" in result.text:
-                isGame = True
-        if isGame == False:
-            error = "Sorry there is no information on this title: Wiki found, but does not appear to be a video game."
-        else:
-            for result in results:
-                if None in (result):
-                    continue
-                game_wiki_text += result.text.strip()
-            output = {game_title: game_wiki_text}
-            with open('game.json', 'w') as json_file:
-                json.dump(output, json_file)
-
-print(error)
-
-
-# Scrapes page from Title to Notes (Full page)
-game_title = "Pokémon_Snap"
-if game_title == "":
-    error = "Please enter a game title"
-else:
-    url="https://en.wikipedia.org/wiki/"+game_title
-
-    page = requests.get(url)
-    if str(page) == "<Response [404]>":
-        error = "Sorry there is no information on this title: No wiki found"
-    else:
-        cut_footer = page.text.split('id="Notes"')
-        cut_header = cut_footer[0].split('id="firstHeading"')
-        soup = BeautifulSoup(cut_header[1], 'html.parser')
-        results = soup.findAll('p')
-        if "game" not in results[0].text:
-            error = "Sorry there is no information on this title: Wiki found, but does not appear to be a video game"
-        else:
-            for result in results:
-                if None in (result):
-                    continue
-                game_wiki_text += result.text.strip()
-            output = {game_title: game_wiki_text}
-            with open('game.json', 'w') as json_file:
-                json.dump(output, json_file)
-print(error)"""
-
-
 app = Flask(__name__)
 
 @app.route('/')

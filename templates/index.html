@@ -10,9 +10,25 @@
         <div id="container">
 
             <form action="/", method="POST">
-                <div id="info_icon">i</div>
+
+                <div class="recc_games">
+                    <div id="info_icon">i</div>
+                    <div class="dropdown-content">
+                        <p>Don't have a game in mind? Try one of these:</p>
+                        <a href="/wiki/minecraft">Minecraft</a>
+                        <a href="/wiki/final fantasy vii">Final Fantasy VII</a>
+                        <a href="/wiki/call of duty">Call of Duty</a>
+                        <a href="/wiki/league of legends">League of Legends</a>
+                        <a href="/wiki/stardew valley">Stardew Valley</a>
+                    </div>
+                </div>
                 <input type="text" id="game_input" name="game_input" placeholder="Enter a video game title here">
-                <input type="submit" id="go_btn" value="GO!">
+                <div class="recc_games">
+                    <input type="submit" id="go_btn" value="GO!">
+                    <div class="dropdown-content">
+                        <p>Enter a game title into the text box and press "GO" to find games similar to yours!</p>
+                    </div>
+                </div>
             </form>
 
                 {% if error %}
@@ -29,6 +45,8 @@
                 {% endif %}
 
         </div>
+
+
 
         </body>
 </html>
