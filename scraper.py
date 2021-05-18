@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, send_from_directory
+from flask import Flask, render_template, request
 from flask_restful import Api, Resource
 from bs4 import BeautifulSoup
 import requests
