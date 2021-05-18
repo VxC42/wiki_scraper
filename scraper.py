@@ -1,9 +1,22 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
+from flask_restful import Api, Resource
 from bs4 import BeautifulSoup
 import requests
 import json
+import base64
 
 app = Flask(__name__)
+api = Api(app)
+
+FILE = "/game.json"
+
+class send_json(Resource):
+    def get(self):
+        f = open('game.json',)
+        data = json.load(f)
+        return (data)
+
+api.add_resource(send_json, "/send")
 
 @app.route('/')
 def index():
@@ -145,6 +158,22 @@ def picked_game(selection):
         json.dump(output, json_file)
 
     return render_template('index.html', success="Success, please wait")
+
+@app.route('/results')
+def display_results():
+    with open('exampleCollageSend.json') as f:
+        data = json.load(f)
+
+    x = data['ImageData']
+    title = data['Title']
+    filename = 'static/images/'+title+'.png'
+    y = bytes(x.split(",")[1], 'utf-8')
+    image_64_decode = base64.decodebytes(y)
+    image_result = open(filename, 'wb')  # create a writable image and write the decoding result
+    image_result.write(image_64_decode)
+
+    return render_template('results.html', images = [[title, filename]])
+
 
 
 if __name__ == "__main__":

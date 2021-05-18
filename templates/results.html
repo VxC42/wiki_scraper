@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+        <title>Game Matcher</title>
+    </head>
+    <body>
+    <a href="/"><h1 id="title">Game Matcher</h1></a>
+        <div id="container">
+
+            {% if images %}
+                {% for image in images %}
+                    <a href="wiki/{{ image[0] }}"><img src="../{{ image[1] }}"></a>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+
+
+
+        </body>
+</html>
