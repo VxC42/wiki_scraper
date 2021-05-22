@@ -11,13 +11,18 @@
 
             {% if images %}
                 {% for image in images %}
-                    <a href="wiki/{{ image[0] }}"><img src="../{{ image[1] }}"></a>
+                    <img src="../{{ image }}">
                 {% endfor %}
             {% endif %}
+
+            <form method="get" action="/">
+                <input id="reset_btn" type="submit" value="Reset" name="Reset"/>
+            </form>
+
 
         </div>
 
 
 
-        </body>
+    </body>
 </html>

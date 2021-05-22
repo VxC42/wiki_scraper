@@ -144,3 +144,19 @@ li > ul{
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .recc_games:hover .dropbtn {background-color: #3e8e41;}
+
+#reset_btn{
+    font-size: 15px;
+    background-color: #606060;
+    border: 1px black solid;
+    width: 70px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    vertical-align: top;
+    color: #ffffff;
+    margin-top:20px;
+}
+#reset_btn:hover{
+    background-color: #edc12d;
+    color: #000000;

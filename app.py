@@ -1,31 +1,26 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_restful import Api, Resource
 from bs4 import BeautifulSoup
 import requests
 import json
 import base64
+import time
 
 app = Flask(__name__)
 api = Api(app)
-
-FILE = "/game.json"
+#app.config['SERVER_NAME'] = 'valchin.com'
 
 class send_json(Resource):
-    def get(self):
+    def sendJson(self):
         f = open('game.json',)
         data = json.load(f)
         return (data)
 
-api.add_resource(send_json, "/send")
-
-@app.route('/')
-def index():
-    return render_template('index.html')
+api.add_resource(send_json, "/sendjson2021")
 
 @app.route('/', methods=['POST', 'GET'])
 def submit_game():
     if request.method == "POST":
-        error = ""
         game_wiki_text = ""
         game_title = request.form['game_input']
 
@@ -90,7 +85,7 @@ def submit_game():
         with open('game.json', 'w') as json_file:
             json.dump(output, json_file)
 
-        return render_template('index.html', success="Success, please wait")
+        return render_template('index.html/', success="Success, please wait")
 
     else:
         return render_template('index.html')
@@ -161,20 +156,41 @@ def picked_game(selection):
 
 @app.route('/results')
 def display_results():
-    with open('exampleCollageSend.json') as f:
-        data = json.load(f)
+    gametitle = "Minecraft"
+    response = requests.get("http://collage.jacobeckroth.com/apirequest/" + gametitle)
+    time.sleep(20)
+    data = response.json()
+    if data["title"] == gametitle:
+        print(data)
 
-    x = data['ImageData']
-    title = data['Title']
-    filename = 'static/images/'+title+'.png'
-    y = bytes(x.split(",")[1], 'utf-8')
-    image_64_decode = base64.decodebytes(y)
-    image_result = open(filename, 'wb')  # create a writable image and write the decoding result
-    image_result.write(image_64_decode)
+        title = data['title']
 
-    return render_template('results.html', images = [[title, filename]])
+        imgraw = data['collageData']
+        wordraw = data['wordCloudData']
+
+        ifilename = 'static/images/imageCollage.png'
+        wfilename = 'static/images/wordCollage.png'
+
+        imgCollage = bytes(imgraw.split(",")[1], 'utf-8')
+        wordCollage = bytes(wordraw.split(",")[1], 'utf-8')
+        imgCollageDecode = base64.decodebytes(imgCollage)
+        wordCollageDecode = base64.decodebytes(wordCollage)
+        print("hello")
+        imgCollageResult = open(ifilename, 'wb')  # create a writable image and write the decoding result
+        wordCollageResult = open(wfilename, 'wb')  # create a writable image and write the decoding result
+        print("hello")
+        imgCollageResult.write(imgCollageDecode)
+        wordCollageResult.write(wordCollageDecode)
+    else:
+        print("False")
+
+    return render_template('results.html', images = [ifilename, wfilename])
+
+@app.route('/reset')
+def reset_to_index():
+    return redirect('index.html')
 
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)
