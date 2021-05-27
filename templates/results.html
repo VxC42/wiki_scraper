@@ -6,22 +6,27 @@
         <title>Game Matcher</title>
     </head>
     <body>
-    <a href="/"><h1 id="title">Game Matcher</h1></a>
-        <div id="container">
+        <a href="/"><h1 id="title">Game Matcher</h1></a>
+            <div id="results-container">
+                {% if images %}
 
-            {% if images %}
-                {% for image in images %}
-                    <img src="../{{ image }}">
-                {% endfor %}
-            {% endif %}
+                <div class="img-container">
+                    <img src="/../{{ images[0] }}" id="imagecollage">
+                </div>
 
-            <form method="get" action="/">
-                <input id="reset_btn" type="submit" value="Reset" name="Reset"/>
-            </form>
+                <div class="img-container">
+                    <img src="/../{{ images[1] }}" id="wordcollage">
+                </div>
 
 
-        </div>
+                {% endif %}
 
+                <form method="get" action="/">
+                    <input id="reset_btn" type="submit" value="Reset" name="Reset"/>
+                </form>
+
+
+            </div>
 
 
     </body>

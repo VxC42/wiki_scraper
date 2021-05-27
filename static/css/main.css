@@ -156,7 +156,35 @@ li > ul{
     vertical-align: top;
     color: #ffffff;
     margin-top:20px;
+    margin-bottom:50px;
 }
+
 #reset_btn:hover{
     background-color: #edc12d;
     color: #000000;
+}
+
+#results-container{
+    width:100%;
+    text-align:center;
+    padding-top: 50px;
+}
+
+.img-container{
+    width:400px;
+    height: 400px;
+    background: #ffffff;
+    vertical-align: middle;
+    text-align:center;
+    display: inline-block;
+    padding: auto;
+}
+
+#imagecollage{
+    width:400px;
+}
+#wordcollage{
+    width:400px;
+    vertical-align:middle;
+    margin-top:50px;
+}
