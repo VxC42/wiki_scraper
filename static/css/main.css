@@ -188,3 +188,16 @@ li > ul{
     vertical-align:middle;
     margin-top:50px;
 }
+
+.hidden{
+    display: none;
+}
+
+.w-100{
+    margin-top:30px;
+    width: 50px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}

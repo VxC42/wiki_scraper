@@ -1,4 +1,30 @@
+from flask import Flask, render_template, request, redirect
+from flask_restful import Api, Resource
+from bs4 import BeautifulSoup
 import requests
+import json
+import base64
+import time
+
+
+
+
+def contact():
+    if request.method == 'POST':
+        if request.form['submit_button'] == 'Do Something':
+            pass # do something
+        elif request.form['submit_button'] == 'Do Something Else':
+            pass # do something else
+        else:
+            pass # unknown
+    elif request.method == 'GET':
+        return render_template('contact.html', form=form)
+
+
+
+
+
+"""import requests
 import base64
 
 BASE = "http://valchin.com/"
@@ -9,7 +35,7 @@ data = response.json()
 if data["title"] == gametitle:
     print("True")
 else:
-    print("False")
+    print("False")"""
 
 
 """

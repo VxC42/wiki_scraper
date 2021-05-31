@@ -4,27 +4,32 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
         <title>Game Matcher</title>
+        <script type="text/javascript">
+            function toggleImage(){
+                  document.querySelector('#waiting').classList.toggle('hidden');
+                }
+        </script>
     </head>
     <body>
     <a href="/"><h1 id="title">Game Matcher</h1></a>
         <div id="container">
 
-            <form action="/", method="POST">
+            <form action="/", method="post">
 
                 <div class="recc_games">
                     <div id="info_icon">i</div>
                     <div class="dropdown-content">
                         <p>Don't have a game in mind? Try one of these:</p>
-                        <a href="/wiki/minecraft">Minecraft</a>
-                        <a href="/wiki/final fantasy vii">Final Fantasy VII</a>
-                        <a href="/wiki/call of duty">Call of Duty</a>
-                        <a href="/wiki/league of legends">League of Legends</a>
-                        <a href="/wiki/stardew valley">Stardew Valley</a>
+                        <a href="/wiki/minecraft" onClick="toggleImage()">Minecraft</a>
+                        <a href="/wiki/final fantasy vii" onClick="toggleImage()">Final Fantasy VII</a>
+                        <a href="/wiki/call of duty" onClick="toggleImage()">Call of Duty</a>
+                        <a href="/wiki/league of legends" onClick="toggleImage()">League of Legends</a>
+                        <a href="/wiki/stardew valley" onClick="toggleImage()">Stardew Valley</a>
                     </div>
                 </div>
                 <input type="text" id="game_input" name="game_input" placeholder="Enter a video game title here">
                 <div class="recc_games">
-                    <input type="submit" id="go_btn" value="GO!">
+                    <button id="go_btn" onClick="toggleImage()">GO!</button>
                     <div class="dropdown-content">
                         <p>Enter a game title into the text box and press "GO" to get a related image!</p>
                     </div>
@@ -37,6 +42,7 @@
                 {% if success %}
                     <div id="succ"><strong>{{ success }}</strong></div>
                 {% endif %}
+                <div id="loading-icon"><img src="/../static/images/loading-buffering.gif" id="waiting" class="hidden w-100"/></div>
                 {% if multiples %}
                     <p id="multimsg">There were multi entries found for that game title, please select the Video Game link below.</p>
                     {% for item in multiples %}
@@ -44,7 +50,11 @@
                     {% endfor %}
                 {% endif %}
 
+
+
         </div>
+
+
 
 
 
